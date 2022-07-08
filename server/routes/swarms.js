@@ -25,7 +25,8 @@ recordRoutes.route('/swarms').get(async function (_req, res) {
 
 recordRoutes.route('/swarms').post(function (req, res) {
   const dbConnect = dbo.getDb();
-  const {lat, lon, z} = req.body.swarmLoc;
+  const {swarmLoc} = req.body;
+  const {lat, lon, z} = swarmLoc;
   const swarmDoc = {
     swarmId: uuidv4(),
     created: new Date(),

@@ -13,12 +13,7 @@ app.use(cors());
 app.use(express.json());
 app.use(require('./routes/hives'));
 app.use(require('./routes/swarms'));
-
-// Global error handling
-app.use(function (err, _req, res) {
-  console.error(err.stack);
-  res.status(500).send('Something broke!');
-});
+app.use(require('./routes/geo'));
 
 // perform a database connection when the server starts
 dbo.connectToServer(function (err) {
