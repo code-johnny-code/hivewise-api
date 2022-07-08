@@ -22,6 +22,21 @@ recordRoutes.route('/hives').get(async function (_req, res) {
     });
 });
 
+recordRoutes.route('/hives/byHex/:hex').get(async function (_req, res) {
+  const dbConnect = dbo.getDb();
+  const {hex} = _req.params;
+  dbConnect
+    .collection('hives')
+    .find({"hiveLoc.h3": hex})
+    .toArray(function (err, result) {
+      if (err) {
+        res.status(400).send('Error fetching hives');
+      } else {
+        res.json(result);
+      }
+    });
+});
+
 recordRoutes.route('/hives').post(function (req, res) {
   const dbConnect = dbo.getDb();
   const {lat, lon} = req.body.hiveLoc;

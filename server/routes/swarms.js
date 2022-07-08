@@ -16,7 +16,22 @@ recordRoutes.route('/swarms').get(async function (_req, res) {
     .limit(50)
     .toArray(function (err, result) {
       if (err) {
-        res.status(400).send('Error fetching hives!');
+        res.status(400).send('Error fetching swarms');
+      } else {
+        res.json(result);
+      }
+    });
+});
+
+recordRoutes.route('/swarms/byHex/:hex').get(async function (_req, res) {
+  const dbConnect = dbo.getDb();
+  const {hex} = _req.params;
+  dbConnect
+    .collection('swarms')
+    .find({"swarmLoc.h3": hex})
+    .toArray(function (err, result) {
+      if (err) {
+        res.status(400).send('Error fetching swarms');
       } else {
         res.json(result);
       }
@@ -25,12 +40,11 @@ recordRoutes.route('/swarms').get(async function (_req, res) {
 
 recordRoutes.route('/swarms').post(function (req, res) {
   const dbConnect = dbo.getDb();
-  const {swarmLoc} = req.body;
-  const {lat, lon, z} = swarmLoc;
+  const {lat, lon, z} = req.body.swarmLoc;
   const swarmDoc = {
     swarmId: uuidv4(),
     created: new Date(),
-    hiveLoc: {
+    swarmLoc: {
       lat: lat,
       lon: lon,
       z: z,
@@ -42,9 +56,9 @@ recordRoutes.route('/swarms').post(function (req, res) {
     .collection('swarms')
     .insertOne(swarmDoc, function (err, result) {
       if (err) {
-        res.status(400).send('Error inserting hive!');
+        res.status(400).send('Error inserting swarm');
       } else {
-        console.log(`Added a new hive with id ${result.insertedId}`);
+        console.log(`Added a new swarm with id ${result.insertedId}`);
         res.status(204).send();
       }
     });
