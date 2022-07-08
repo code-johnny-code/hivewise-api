@@ -44,6 +44,7 @@ recordRoutes.route('/swarms').post(function (req, res) {
   const swarmDoc = {
     swarmId: uuidv4(),
     created: new Date(),
+    activeSwarm: req.body.activeSwarm,
     swarmLoc: {
       lat: lat,
       lon: lon,
@@ -59,6 +60,25 @@ recordRoutes.route('/swarms').post(function (req, res) {
         res.status(400).send('Error inserting swarm');
       } else {
         console.log(`Added a new swarm with id ${result.insertedId}`);
+        res.status(204).send();
+      }
+    });
+});
+
+recordRoutes.route('/swarms/deactivate').put(function (req, res) {
+  const dbConnect = dbo.getDb();
+  const {swarmId} = req.body;
+  const swarmDoc = {
+    swarmId: swarmId,
+  };
+
+  dbConnect
+    .collection('swarms')
+    .updateOne(swarmDoc, {$set: {activeSwarm: false}}, function (err, result) {
+      if (err) {
+        res.status(400).send('Error deactivating swarm');
+      } else {
+        console.log(`Deactivated a swarm with id ${result.insertedId}`);
         res.status(204).send();
       }
     });
