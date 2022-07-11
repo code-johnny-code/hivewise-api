@@ -116,7 +116,7 @@ recordRoutes.route('/swarms').delete((req, res) => {
           .send(`Error deleting listing with id ${swarmQuery.swarmId}!`);
       }
       else if (_result.result.n) {
-        console.log('1 document deleted');
+        console.log('Swarm document deleted');
         res.sendStatus(204);
       } else {
         res.sendStatus(410)
