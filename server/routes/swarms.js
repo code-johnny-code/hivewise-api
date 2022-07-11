@@ -23,6 +23,22 @@ recordRoutes.route('/swarms').get(async function (_req, res) {
     });
 });
 
+recordRoutes.route('/swarms/active').get(async function (_req, res) {
+  const dbConnect = dbo.getDb();
+
+  dbConnect
+    .collection('swarms')
+    .find({activeSwarm: true})
+    .limit(50)
+    .toArray(function (err, result) {
+      if (err) {
+        res.status(400).send('Error fetching active swarms');
+      } else {
+        res.json(result);
+      }
+    });
+});
+
 recordRoutes.route('/swarms/byHex/:hex').get(async function (_req, res) {
   const dbConnect = dbo.getDb();
   const {hex} = _req.params;
@@ -41,8 +57,9 @@ recordRoutes.route('/swarms/byHex/:hex').get(async function (_req, res) {
 recordRoutes.route('/swarms').post(function (req, res) {
   const dbConnect = dbo.getDb();
   const {lat, lon, z} = req.body.swarmLoc;
+  const swarmId = uuidv4();
   const swarmDoc = {
-    swarmId: uuidv4(),
+    swarmId: swarmId,
     created: new Date(),
     activeSwarm: req.body.activeSwarm,
     firstSeen: req.body.firstSeen,
@@ -57,11 +74,11 @@ recordRoutes.route('/swarms').post(function (req, res) {
 
   dbConnect
     .collection('swarms')
-    .insertOne(swarmDoc, function (err, result) {
+    .insertOne(swarmDoc, function (err) {
       if (err) {
         res.status(400).send('Error inserting swarm');
       } else {
-        console.log(`Added a new swarm with id ${result.insertedId}`);
+        console.log(`Added swarm ${swarmId}`);
         res.status(204).send();
       }
     });
@@ -76,11 +93,11 @@ recordRoutes.route('/swarms/deactivate').put(function (req, res) {
 
   dbConnect
     .collection('swarms')
-    .updateOne(swarmDoc, {$set: {activeSwarm: false}}, function (err, result) {
+    .updateOne(swarmDoc, {$set: {activeSwarm: false, deactivated: new Date()}}, function (err) {
       if (err) {
         res.status(400).send('Error deactivating swarm');
       } else {
-        console.log(`Deactivated a swarm with id ${result.insertedId}`);
+        console.log(`Deactivated swarm ${swarmId}`);
         res.status(204).send();
       }
     });
