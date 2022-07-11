@@ -45,12 +45,14 @@ recordRoutes.route('/swarms').post(function (req, res) {
     swarmId: uuidv4(),
     created: new Date(),
     activeSwarm: req.body.activeSwarm,
+    firstSeen: req.body.firstSeen,
     swarmLoc: {
       lat: lat,
       lon: lon,
       z: z,
       h3: h3.geoToH3(lat, lon, hexResolution)
-    }
+    },
+    contact: req.body.contact
   }
 
   dbConnect
