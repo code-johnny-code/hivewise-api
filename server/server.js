@@ -15,6 +15,7 @@ app.use(require('./routes/hives'));
 app.use(require('./routes/swarms'));
 app.use(require('./routes/geo'));
 app.use(require('./routes/users'));
+app.use(require('./routes/catchers'));
 
 // perform a database connection when the server starts
 dbo.connectToServer(function (err) {
