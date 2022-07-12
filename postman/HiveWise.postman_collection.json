@@ -1,0 +1,485 @@
+{
+	"info": {
+		"_postman_id": "f3177f7a-a45b-41c0-9fe8-eee93087f702",
+		"name": "HiveWise",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Hives",
+			"item": [
+				{
+					"name": "Create a Hive",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"hiveName\": \"Vault 833\",\n    \"hiveLoc\": {\n        \"lat\": 38.636224,\n        \"lon\": -90.246775\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/hives",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"hives"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a Hive",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"hiveId\": \"757d48d9-888a-41da-87fc-a515198b2da0\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/hives",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"hives"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Hives (Limit 50)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/hives",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"hives"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Hives by Hex",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/hives/byHex/8726ed176ffffff",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"hives",
+								"byHex",
+								"8726ed176ffffff"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Swarms",
+			"item": [
+				{
+					"name": "Create a Swarm",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"swarmLoc\": {\n        \"lat\": 38.636224,\n        \"lon\": -90.246775\n        \"z\": 42\n        },\n    \"firstSeen\": \"2022-07-08T02:35:00.718Z\",\n    \"contact\": {\n        \"name\": \"John Doe\",\n        \"phone\": \"111-111-1111\",\n        \"email\": \"john.doe@email.com\"\n        },\n    \"activeSwarm\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/swarms",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"swarms"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a Swarm",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"swarmId\": \"4c67cd9a-39f2-4bcc-9635-7346f8647043\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/swarms",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"swarms"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Swarms (Limit 50)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/swarms",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"swarms"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Active Swarms (Limit 50)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/swarms/active",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"swarms",
+								"active"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Swarms by Hex",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/swarms/byHex/8726ed176ffffff",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"swarms",
+								"byHex",
+								"8726ed176ffffff"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deactivate Swarm",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"swarmId\": \"4c67cd9a-39f2-4bcc-9635-7346f8647043\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/swarms/deactivate",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"swarms",
+								"deactivate"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "H3",
+			"item": [
+				{
+					"name": "Get Hex Boundary",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:5000/geo/hex/boundary/8726ed176ffffff",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"geo",
+								"hex",
+								"boundary",
+								"8726ed176ffffff"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Hex Centroid",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:5000/geo/hex/centroid/8726ed176ffffff",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"geo",
+								"hex",
+								"centroid",
+								"8726ed176ffffff"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Get Users (Limit 50)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/users",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"John Doe\",\n    \"email\": \"john.doe@email.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/users",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"swarmId\": \"4c67cd9a-39f2-4bcc-9635-7346f8647043\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/swarms",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"swarms"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Catchers",
+			"item": [
+				{
+					"name": "Create a Catcher",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": \"9d46377e-7d25-4e1c-865e-b7319112578f\",\n    \"regions\": [\"8726ed10affffff\", \"8726ed108ffffff\", \"8726ed109ffffff\", \"8726ed10bffffff\"],\n    \"notifyBy\": [{\"type\": \"email\", \"value\": \"john.doe@email.com\"}, {\"type\": \"SMS\", \"value\": \"111-111-1111\"}],\n    \"vacation\": false,\n    \"maxHeight\": 20,\n    \"cutout\": false,\n    \"schedule\": {\n      \"monday\": {\n        \"startTime\": \"0000\",\n        \"endTime\": \"2359\"\n      },\n      \"tuesday\": {\n        \"startTime\": \"0000\",\n        \"endTime\": \"2359\"\n      },\n      \"wednesday\": {\n        \"startTime\": \"0000\",\n        \"endTime\": \"2359\"\n      },\n      \"thursday\": {\n        \"startTime\": \"0000\",\n        \"endTime\": \"2359\"\n      },\n      \"friday\": {\n        \"startTime\": \"0000\",\n        \"endTime\": \"2359\"\n      },\n      \"saturday\": {\n        \"startTime\": \"0000\",\n        \"endTime\": \"2359\"\n      },\n      \"sunday\": {\n        \"startTime\": \"0000\",\n        \"endTime\": \"2359\"\n      }\n    }\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/catchers",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"catchers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Catchers (Limit 50)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/catchers",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"catchers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Catchers by Hex",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/swarms/byHex/8726ed176ffffff",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"swarms",
+								"byHex",
+								"8726ed176ffffff"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a User Copy",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"swarmId\": \"4c67cd9a-39f2-4bcc-9635-7346f8647043\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/swarms",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"swarms"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
