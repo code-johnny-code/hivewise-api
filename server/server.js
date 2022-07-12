@@ -14,6 +14,7 @@ app.use(express.json());
 app.use(require('./routes/hives'));
 app.use(require('./routes/swarms'));
 app.use(require('./routes/geo'));
+app.use(require('./routes/users'));
 
 // perform a database connection when the server starts
 dbo.connectToServer(function (err) {
