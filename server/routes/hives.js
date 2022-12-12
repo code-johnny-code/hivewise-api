@@ -64,15 +64,13 @@ recordRoutes.route('/hives').post(function (req, res) {
 recordRoutes.route('/hives').delete((req, res) => {
   const dbConnect = dbo.getDb();
   const hiveQuery = { hiveId: req.body.hiveId };
-
   dbConnect.collection('hives').deleteOne(hiveQuery, function (err, _result) {
     if (err) {
       res.status(400).send(`Error deleting hive with id ${hiveQuery.hiveId}`);
     } else if (_result.result.n) {
-      console.log('1 document deleted');
       res.sendStatus(204);
     } else {
-      res.sendStatus(410);
+      res.sendStatus(404);
     }
   });
 });
