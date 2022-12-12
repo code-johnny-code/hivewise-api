@@ -112,7 +112,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"swarmLoc\": {\n        \"lat\": 38.636224,\n        \"lon\": -90.246775\n        \"z\": 42\n        },\n    \"firstSeen\": \"2022-07-08T02:35:00.718Z\",\n    \"contact\": {\n        \"name\": \"John Doe\",\n        \"phone\": \"111-111-1111\",\n        \"email\": \"john.doe@email.com\"\n        },\n    \"activeSwarm\": true\n}",
+							"raw": "{\n    \"swarmLoc\": {\n        \"lat\": 38.636224,\n        \"lon\": -90.246775,\n        \"z\": 42\n        },\n    \"firstSeen\": \"2022-07-08T02:35:00.718Z\",\n    \"contact\": {\n        \"name\": \"John Doe\",\n        \"phone\": \"111-111-1111\",\n        \"email\": \"john.doe@email.com\"\n        },\n    \"activeSwarm\": true\n}",
 							"options": {
 								"raw": {
 									"language": "json"
